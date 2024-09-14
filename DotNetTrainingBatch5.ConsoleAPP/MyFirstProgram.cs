@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 Console.WriteLine("Hello, World!");
 //Console.ReadLine();
-Console.WriteLine("Hello, Myanmar");
+Console.WriteLine("Hello, Myanmar Pyi Gyi");
 //Console.ReadKey();
 
 // ADO.NET
@@ -18,9 +18,9 @@ string connectionString = "Data Source=UCHIASALAI\\SQLEXPRESS;Initial Catalog=Do
 Console.WriteLine("Connection string: " + connectionString);
 SqlConnection connection = new SqlConnection(connectionString);
 
-Console.WriteLine("Connection opening...");
+Console.WriteLine("Connection is opening...");
 connection.Open();
-Console.WriteLine("Connection opened.");
+Console.WriteLine("Connection was opened.");
 
 string query = @"SELECT [BlogId]
       ,[BlogTitle]
@@ -51,9 +51,9 @@ while (reader.Read())
 //    //Console.WriteLine(dr["DeleteFlag"]);
 //}
 
-Console.WriteLine("Connection closing...");
+Console.WriteLine("Connection is closing...");
 connection.Close();
-Console.WriteLine("Connection closed.");
+Console.WriteLine("Connection was closed.");
 
 // DataSet
 // DataTable
