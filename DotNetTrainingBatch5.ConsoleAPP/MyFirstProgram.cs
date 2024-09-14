@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 Console.WriteLine("Hello, World!");
 //Console.ReadLine();
-Console.WriteLine("Hello, Myanmar");
+Console.WriteLine("Hello, Myanmar Pyi Gyi");
 //Console.ReadKey();
 
 // ADO.NET
