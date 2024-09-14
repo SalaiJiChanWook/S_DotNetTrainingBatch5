@@ -14,7 +14,7 @@ Console.WriteLine("Hello, Myanmar Pyi Gyi");
 //connection.Close();
 
 
-string connectionString = "Data Source=UCHIASALAI\\SQLEXPRESS;Initial Catalog=DotNetTrainingBatch5;User ID=salai;Password=Vpjtqwv23@#;";
+string connectionString = "Data Source=UCHIASALAI\\SQLEXPRESS;Initial Catalog=DotNetTrainingBatch5;User ID=salai;Password=Vpjtqwv23@;";
 Console.WriteLine("Connection string: " + connectionString);
 SqlConnection connection = new SqlConnection(connectionString);
 
