@@ -199,5 +199,28 @@ namespace DotNetTrainingBatch5.ConsoleAPP
 
             Console.WriteLine(result == 1 ? "Updating Successful." : "Updating Failed.");
         }
+
+
+        public void Delete()
+        {
+            Console.WriteLine("Enter the Blog title you want to delete: ");
+            string title = Console.ReadLine();
+
+            
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            string query = @"DELETE  FROM [dbo].[Tbl_blog] where BlogTitle = @BlogTitle"; 
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@BlogTitle", title);
+
+            int result = cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            Console.WriteLine(result == 1 ? "Deleting  Successful." : "Deleting Failed.");
+        }
     }
 }
