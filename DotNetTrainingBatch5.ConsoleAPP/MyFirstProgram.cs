@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using DotNetTrainingBatch5.ConsoleAPP;
+using System.Data;
 using System.Data.SqlClient;
 Console.WriteLine("Hello, World!");
 //Console.ReadLine();
@@ -68,5 +70,12 @@ Console.WriteLine("Connection was closed.");
 //    Console.WriteLine(dr["BlogContent"]);
 //    //Console.WriteLine(dr["DeleteFlag"]);
 //}
+
+AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
+adoDotNetExample.Read();
+//adoDotNetExample.Create();
+//adoDotNetExample.Edit();
+//adoDotNetExample.Update();
+
 
 Console.ReadKey();
