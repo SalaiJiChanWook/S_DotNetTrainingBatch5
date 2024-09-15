@@ -37,10 +37,11 @@ SqlCommand cmd = new SqlCommand(query, connection);
 SqlDataReader reader = cmd.ExecuteReader();
 while (reader.Read())
 {
-    Console.WriteLine(reader["BlogId"]);
-    Console.WriteLine(reader["BlogTitle"]);
-    Console.WriteLine(reader["BlogAuthor"]);
-    Console.WriteLine(reader["BlogContent"]);
+    Console.WriteLine($"BlogId: {reader["BlogId"]}");
+    Console.WriteLine($"BlogTitle: {reader["BlogTitle"]}");
+    Console.WriteLine($"BlogAuthor: {reader["BlogAuthor"]}");
+    Console.WriteLine($"BlogContent: {reader["BlogContent"]}");
+    Console.WriteLine($"DeleteFlag: {reader["DeleteFlag"]}");
     //Console.WriteLine(dr["DeleteFlag"]);
 }
 
