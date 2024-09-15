@@ -71,6 +71,7 @@ Console.WriteLine("Connection was closed.");
 //    //Console.WriteLine(dr["DeleteFlag"]);
 //}
 
+
 AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
 adoDotNetExample.Read();
 //adoDotNetExample.Create();
