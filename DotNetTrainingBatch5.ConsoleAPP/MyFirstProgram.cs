@@ -73,7 +73,7 @@ Console.WriteLine("Connection was closed.");
 //}
 
 //AdoDotNet CRUD Example
-//AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
+//AdoDotNetExample adoDotNetExample = new AdoDotNetExample(); 
 //adoDotNetExample.Read();
 //adoDotNetExample.Create();
 //adoDotNetExample.Edit();
@@ -82,9 +82,16 @@ Console.WriteLine("Connection was closed.");
 
 
 //Dapper CRUD Example
-DapperExample dapperExample = new DapperExample();
-dapperExample.Read();
+//DapperExample dapperExample = new DapperExample();
+//dapperExample.Read();
+//dapperExample.Edit(1);
+//dapperExample.Edit(2);
 //dapperExample.Create("Who is Yahiko", "Jiraiya", "Yahiko (弥彦) was a shinobi from Amegakure. Alongside his fellow war orphans, Nagato and Konan, he founded and led the Akatsuki in an attempt to bring peace.");
+
+//EFCore CURD Example
+EFCoreExample edCoreExample = new EFCoreExample();
+edCoreExample.Read();
+//edCoreExample.create("Legend of Minato Namikaze", "Jiraiya Sensei", "Minato Namikaze was was the Fourth Hokage (Yondaime Hokage, literally meaning: Fourth Fire Shadow) of Konohagakure. He was renowned all over the world as Konoha's Yellow Flash");
 
 
 Console.ReadKey();

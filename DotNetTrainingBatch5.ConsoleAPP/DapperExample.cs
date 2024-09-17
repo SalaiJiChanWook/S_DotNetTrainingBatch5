@@ -55,8 +55,34 @@ namespace DotNetTrainingBatch5.ConsoleAPP
                     BlogContent = content });
                 Console.WriteLine(result == 1 ? "Data Saving is Successful." : "Data Saving was Failed.");
 
+
             }
 
         }
+
+        public void Edit(int id) 
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string query = " select * from tbl_blog where DeleteFlag = 0 and BlogId = @BlogId";
+                var item =db.Query <BlogDataModel>(query, new BlogDataModel
+                {
+                    BlogId = id
+                }).FirstOrDefault();
+
+                //if (item == null)
+                if (item is  null)
+                {
+                    Console.WriteLine($"There is no data in Table id={id}");
+                    return;
+                }
+
+                Console.WriteLine($"BlogId= {item.BlogId}");
+                Console.WriteLine($"BlogTitle= {item.BlogTitle}");
+                Console.WriteLine($"BlogAuthor= {item.BlogAuthor}");
+                Console.WriteLine($"BlogContent= {item.BlogContent}");
+            }        
+        } 
+
     }
 }
