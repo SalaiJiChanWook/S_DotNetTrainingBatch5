@@ -24,26 +24,26 @@ Console.WriteLine("Connection is opening...");
 connection.Open();
 Console.WriteLine("Connection was opened.");
 
-string query = @"SELECT [BlogId]
-      ,[BlogTitle]
-      ,[BlogAuthor]
-      ,[BlogContent]
-      ,[DeleteFlag]
-  FROM [dbo].[Tbl_Blog] where DeleteFlag = 0";
-SqlCommand cmd = new SqlCommand(query, connection);
+//string query = @"SELECT [BlogId]
+//      ,[BlogTitle]
+//      ,[BlogAuthor]
+//      ,[BlogContent]
+//      ,[DeleteFlag]
+//  FROM [dbo].[Tbl_Blog] where DeleteFlag = 0";
+//SqlCommand cmd = new SqlCommand(query, connection);
 //SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 //DataTable dt = new DataTable();
 //adapter.Fill(dt);
-SqlDataReader reader = cmd.ExecuteReader();
-while (reader.Read())
-{
-    Console.WriteLine($"BlogId: {reader["BlogId"]}");
-    Console.WriteLine($"BlogTitle: {reader["BlogTitle"]}");
-    Console.WriteLine($"BlogAuthor: {reader["BlogAuthor"]}");
-    Console.WriteLine($"BlogContent: {reader["BlogContent"]}");
-    Console.WriteLine($"DeleteFlag: {reader["DeleteFlag"]}");
+//SqlDataReader reader = cmd.ExecuteReader();
+//while (reader.Read())
+//{
+//    Console.WriteLine($"BlogId: {reader["BlogId"]}");
+//    Console.WriteLine($"BlogTitle: {reader["BlogTitle"]}");
+//    Console.WriteLine($"BlogAuthor: {reader["BlogAuthor"]}");
+//    Console.WriteLine($"BlogContent: {reader["BlogContent"]}");
+//    Console.WriteLine($"DeleteFlag: {reader["DeleteFlag"]}");
     //Console.WriteLine(dr["DeleteFlag"]);
-}
+//}
 
 //foreach (DataRow dr in dt.Rows)
 //{
@@ -72,13 +72,19 @@ Console.WriteLine("Connection was closed.");
 //    //Console.WriteLine(dr["DeleteFlag"]);
 //}
 
-
-AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
-adoDotNetExample.Read();
+//AdoDotNet CRUD Example
+//AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
+//adoDotNetExample.Read();
 //adoDotNetExample.Create();
 //adoDotNetExample.Edit();
 //adoDotNetExample.Update();
 //adoDotNetExample.Delete();
+
+
+//Dapper CRUD Example
+DapperExample dapperExample = new DapperExample();
+dapperExample.Read();
+//dapperExample.Create("Who is Yahiko", "Jiraiya", "Yahiko (弥彦) was a shinobi from Amegakure. Alongside his fellow war orphans, Nagato and Konan, he founded and led the Akatsuki in an attempt to bring peace.");
 
 
 Console.ReadKey();
