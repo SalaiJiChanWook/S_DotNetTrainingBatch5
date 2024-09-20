@@ -82,7 +82,31 @@ namespace DotNetTrainingBatch5.ConsoleAPP
                 Console.WriteLine($"BlogAuthor= {item.BlogAuthor}");
                 Console.WriteLine($"BlogContent= {item.BlogContent}");
             }        
-        } 
+        }
+
+        public void Delete(string title )
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string query = " Delete from tbl_blog where DeleteFlag = 0 and BlogTitle = @BlogTitle";
+                var item = db.Query<BlogDataModel>(query, new BlogDataModel
+                {
+                    BlogTitle = title
+                }).FirstOrDefault();
+
+                //if (item == null)
+                if (item is null)
+                {
+                    Console.WriteLine($"There is no data in Table like this title='{title}'");
+                    return;
+                }
+
+                Console.WriteLine($"BlogId= {item.BlogId}");
+                Console.WriteLine($"BlogTitle= {item.BlogTitle}");
+                Console.WriteLine($"BlogAuthor= {item.BlogAuthor}");
+                Console.WriteLine($"BlogContent= {item.BlogContent}");
+            }
+        }
 
     }
 }
