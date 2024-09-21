@@ -58,8 +58,9 @@ namespace DotNetTrainingBatch5.ConsoleAPP
         public void update(int id, string title, string author, string content) {
             AppDbContext db = new AppDbContext();
             var iteam = db.Blogs
-                .AsNoTracking()//အလုပ်မှာတော့သူ့ကိုသုံးပေးရတယ်။ ဒေတာဖတ်ရိုဘဲသွင်းရုံဘဲဆို performanceအတွက် အဆင်ပြေတယ်။ ဒါပေမယ့် အရေးကြီးတဲ့confidentialဒေတာတွေကိုင်တွယ်ရတဲ့အခါမှာ AsNoTracking()ထက် Tracking()ကိုသုံးပေးရမယ်။
-                //Tracking()ကCache memoryထဲမှာ ဒေတာတွေကိုင်တွယ်တဲ့မှတ်တမ်းကို logတွေနှင့်သိမ်းထားပေးတယ့်အတွက်ကြောင့် ‌ေု‌ေ‌ေ‌ေ‌ေ‌ေဒေတာတွေပျောက်တာပျက်တာနှင့်ပြင်တာတွေကို ပြန်ရှာ/ပြန်ကြည့်နိုင်တယ်။
+                .AsNoTracking()//အလုပ်မှာတော့သူ့ကိုသုံးပေးရတယ်။ ဒေတာဖတ်ရိုဘဲသွင်းရုံဘဲဆို performanceအတွက် အဆင်ပြေတယ်။ ဒါပေမယ့် အရေးကြီးတဲ့confidentialဒေတာတွေကိုင်တွယ်ရတဲ့အခါမှာတော့ AsNoTracking()ထက် Tracking()ကိုသုံးပေးရမယ်။
+                               //Tracking()ကCache memoryထဲမှာ ဒေတာတွေကိုင်တွယ်တဲ့မှတ်တမ်းကို logတွေနှင့်သိမ်းထားပေးတယ့်အတွက်ကြောင့် ‌ေု‌ေ‌ေ‌ေ‌ေ‌ေဒေတာတွေပျောက်တာပျက်တာနှင့်ပြင်တာတွေကို ပြန်ရှာ/ပြန်ကြည့်နိုင်တယ်။
+                               // AsNoTrackingက ၁၀မီလီစက္ကန့်နှင့်ပြီးနေချိန် Trackingက ၁၃မီလီစက္ကန့်မှပြီးတယ်
                 .FirstOrDefault(x=>x.BlogId == id);
             if (iteam is null) {
                 Console.WriteLine($"There are no data to update at Id:{id}");
