@@ -73,7 +73,7 @@ Console.WriteLine("Connection was closed.");
 //}
 
 //AdoDotNet CRUD Example
-//AdoDotNetExample adoDotNetExample = new AdoDotNetExample(); 
+AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
 //adoDotNetExample.Read();
 //adoDotNetExample.Create();
 //adoDotNetExample.Edit();
@@ -83,7 +83,7 @@ Console.WriteLine("Connection was closed.");
 
 
 //Dapper CRUD Example
-//DapperExample dapperExample = new DapperExample();
+DapperExample dapperExample = new DapperExample();
 //dapperExample.Read();
 //dapperExample.Edit(1);
 //dapperExample.Edit(2);
