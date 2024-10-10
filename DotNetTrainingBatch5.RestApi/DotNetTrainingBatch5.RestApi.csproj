@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DotNetTrainingBatch5.ConsoleAPP\DotNetTrainingBatch5.ConsoleAPP.csproj" />
     <ProjectReference Include="..\DotNetTrainingBatch5.Database\DotNetTrainingBatch5.Database.csproj" />
   </ItemGroup>
 

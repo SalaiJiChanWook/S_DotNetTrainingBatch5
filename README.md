@@ -88,3 +88,38 @@ dotnet ef dbcontext scaffold "Server=ServerName;Database=DbName;User Id=salai;Pa
 API
 
 HttpMethod HttpStatusCode Request / Response
+
+
+
+5th Weeks
+
+Visual Studio 2022 Installation
+Microsoft SQL Server 2022
+SSMS (SQL Server Management System)
+
+C# Basic
+SQL Basic
+
+Console App (Create Project)
+DTO (Data Transfer Object)
+Nuget Package
+ADO.NET
+Dapper
+- ORM
+- Data Model
+- AsNoTracking
+EF Core
+- AppDbContext
+- Database First
+REST API (ASP.NET Core Web API)
+- Swagger
+- Postman
+- HTTP Method
+- HTTP Status Code
+
+=====================================
+
+API For Backend Development
+
+Data Model (Data Access, Database)
+View Model (Frontend Return Data)

@@ -100,5 +100,9 @@ edCoreExample.Read();
 //edCoreExample.Edit();
 //edCoreExample.create("Legend of Minato Namikaze", "Jiraiya Sensei", "Minato Namikaze was was the Fourth Hokage (Yondaime Hokage, literally meaning: Fourth Fire Shadow) of Konohagakure. He was renowned all over the world as Konoha's Yellow Flash");
 
+//Slicing the string using SubString function
+string query = "[BlogContent] = @BlogContent,";
+Console.WriteLine(query.Substring(0, query.Length - 1));
+
 
 Console.ReadKey();
