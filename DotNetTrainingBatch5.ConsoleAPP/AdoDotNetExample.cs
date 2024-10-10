@@ -10,7 +10,7 @@ namespace DotNetTrainingBatch5.ConsoleAPP
 {
     public class AdoDotNetExample
     {
-        private readonly string _connectionString = "Data Source= UCHIASALAI\\SQLEXPRESS;Initial Catalog=DotNetTrainingBatch5;User ID=salai;Password=Vpjtqwv23@#";
+        private readonly string _connectionString = "Data Source= UCHIASALAI\\SQLEXPRESS;Initial Catalog=DotNetTrainingBatch5;User ID=salai;Password=Vpjtqwv23@#;TrustServerCertificate=True;";
 
         public void Read()
         {
