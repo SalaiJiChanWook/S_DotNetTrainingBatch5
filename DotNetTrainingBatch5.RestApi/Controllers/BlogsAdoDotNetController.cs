@@ -10,6 +10,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
+using System;
 
 namespace DotNetTrainingBatch5.RestApi.Controllers
 {
@@ -85,6 +86,10 @@ namespace DotNetTrainingBatch5.RestApi.Controllers
 
             if (reader.Read())
             {
+                //Console.WriteLine(reader["BlogId"]);
+                //Console.WriteLine(reader["BlogTitle"]);
+                //Console.WriteLine(reader["BlogAuthor"]);
+                //Console.WriteLine(reader["BlogContent"]);
                 var blogItem = new BlogViewModel
                 {
                     Id = Convert.ToInt32(reader["BlogId"]),
@@ -107,17 +112,75 @@ namespace DotNetTrainingBatch5.RestApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateBlog(TblBlog blog)
+        public IActionResult CreateBlog(BlogDataModel blog)
         {
-          
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            string query = $@"INSERT INTO [dbo].[Tbl_Blog]
+           ([BlogTitle]
+           ,[BlogAuthor]
+           ,[BlogContent]
+           ,[DeleteFlag])
+     VALUES
+           (@BlogTitle
+           ,@BlogAuthor
+           ,@BlogContent
+           ,0)";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataReader reader = command.ExecuteReader();
+            //while (reader.Read())
+            //{
+
+            //    {
+            //        Console.WriteLine(reader["BlogId"]);
+            //        Console.WriteLine(reader["BlogTitle"]);
+            //        Console.WriteLine(reader["BlogAuthor"]);
+            //        Console.WriteLine(reader["BlogContent"]);
+                 { 
+                    command.Parameters.AddWithValue("@BlogTitle", blog.BlogTitle);
+                    command.Parameters.AddWithValue("@BlogAuthor", blog.BlogAuthor);
+                    command.Parameters.AddWithValue("@BlogContent", blog.BlogContent);
+                }
+                    
+                
+            //}
+            int result = command.ExecuteNonQuery();
+            connection.Close();
+
+            return Ok(result == 1 ? "Saving in Databaes is Successful." : "Saving in Database was Failed.");
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateBlog(int id, TblBlog blog)
+        public IActionResult UpdateBlog(int id, BlogViewModel blog)
         {
-           
 
-           
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            string queryInsert = @"UPDATE [dbo].[Tbl_Blog]
+                           SET [BlogTitle] = @BlogTitle
+                              ,[BlogAuthor] = @BlogAuthor
+                              ,[BlogContent] = @BlogContent
+                              ,[DeleteFlag] = 0
+                         WHERE BlogId = @BlogId";
+
+            SqlCommand command = new SqlCommand(queryInsert, connection);
+            command.Parameters.AddWithValue("@BlogId", id);
+            command.Parameters.AddWithValue("@BlogTitle", blog.Title);
+            command.Parameters.AddWithValue("@BlogAuthor", blog.Author);
+            command.Parameters.AddWithValue("@BlogContent", blog.Content);
+
+            int result = command.ExecuteNonQuery();
+
+            connection.Close();
+
+            //Console.WriteLine(result == 1 ? "Updating successfully.." : "Updating failed..");
+
+            return Ok(result == 1 ? $"Updating the blog where Id={id} is successfully.." : $"Updating the blog where Id={id} was failed..");
+
         }
 
         [HttpPatch("{id}")]
@@ -126,22 +189,22 @@ namespace DotNetTrainingBatch5.RestApi.Controllers
             string conditions = "";
             if(!string.IsNullOrEmpty(blog.Title))
             {
-                conditions += "[]BlogTitle] = @BlogTitle,";
+                conditions += "[BlogTitle] = @BlogTitle,";
             }
 
             if (!string.IsNullOrEmpty(blog.Author))
             {
-                conditions += "[]BlogAuthor] = @BlogAuthor,";
+                conditions += "[BlogAuthor] = @BlogAuthor,";
             }
 
             if (!string.IsNullOrEmpty(blog.Content))
             {
-                conditions += "[]BlogContent] = @BlogContent,";
+                conditions += "[BlogContent] = @BlogContent,";
             }
 
             if(conditions.Length == 0)
             {
-                return BadRequest("You requested Invalid Parameters!");
+                return BadRequest("You requested with the Invalid Parameters!");
             }
 
             conditions = conditions.Substring(0, conditions.Length - 1);
@@ -171,8 +234,9 @@ namespace DotNetTrainingBatch5.RestApi.Controllers
             int result = cmd.ExecuteNonQuery();
 
             connection.Close();
-            return Ok(result == 1 ? "Updating Successful." : "Updating Failed.");
             Console.WriteLine(result == 1 ? "Updating Successful." : "Updating Failed.");
+            return Ok(result == 1 ? "Updating Successful." : "Updating Failed.");
+           
         }
 
         [HttpDelete("{id}")]
