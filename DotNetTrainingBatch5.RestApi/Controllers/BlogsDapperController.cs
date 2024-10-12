@@ -169,31 +169,37 @@ namespace DotNetTrainingBatch5.RestApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteBlog(int id)
+        public IActionResult DeleteBlog(int id, BlogViewModel blog)
         {
 
 
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string query = " Delete from tbl_blog where DeleteFlag = 0 and BlogId = @BlogId";
-                var item = db.Query<BlogDataModel>(query, new BlogDataModel
-                {
-                    BlogId = id
-                }).FirstOrDefault();
+                string query = "UPDATE [dbo].[Tbl_Blog] SET DeleteFlag = 1 WHERE BlogId = @BlogId";
+                int result = db.Execute(query, new BlogViewModel { Id = id });
 
-                //if (item == null)
-                if (item is null)
-                {
-                    Console.WriteLine($"There is no data in Table with this id='{id}'");
-                    return BadRequest($"There is no data in Table with this id='{id}'");
-                }
+                return Ok(result == 0 ? "Deleting Blog Failed !" : "Successfully Deleted Blog");
 
-                //Console.WriteLine($"BlogId= {item.BlogId}");
-                //Console.WriteLine($"BlogTitle= {item.BlogTitle}");
-                //Console.WriteLine($"BlogAuthor= {item.BlogAuthor}");
-                //Console.WriteLine($"BlogContent= {item.BlogContent}");
 
-                return Ok("Successfully Deleted Blog");
+                //string query = " Delete from tbl_blog where DeleteFlag = 0 and BlogId = @BlogId";
+                //var item = db.Query<BlogDataModel>(query, new BlogDataModel
+                //{
+                //    BlogId = id
+                //}).FirstOrDefault();
+
+                ////if (item == null)
+                //if (item is null)
+                //{
+                //    Console.WriteLine($"There is no data in Table with this id='{id}'");
+                //    return NotFound($"There is no data in Table with this id='{id}'");
+                //}
+
+                ////Console.WriteLine($"BlogId= {item.BlogId}");
+                ////Console.WriteLine($"BlogTitle= {item.BlogTitle}");
+                ////Console.WriteLine($"BlogAuthor= {item.BlogAuthor}");
+                ////Console.WriteLine($"BlogContent= {item.BlogContent}");
+
+                //return Ok("Successfully Deleted Blog");
             }
         }
            
