@@ -60,8 +60,8 @@ namespace DotNetTrainingBatch5.RestApi.Controllers
                         DeleteFlag = Convert.ToBoolean(reader["DeleteFlag"]),
                     };
                     lst.Add(item);
-                }
-            }
+                };
+            };
             connection.Close();
 
             return Ok(lst);
@@ -255,7 +255,7 @@ namespace DotNetTrainingBatch5.RestApi.Controllers
             connection.Close();
             return Ok(result == 1 ? $"Deleting id={id} is Successful." : $"Deleting id={id} was Failed.");
 
-            Console.WriteLine(result == 1 ? "Deleting  Successful." : "Deleting Failed.");
+            //Console.WriteLine(result == 1 ? "Deleting  Successful." : "Deleting Failed.");
 
 
             //var item = _db.TblBlogs.AsNoTracking().FirstOrDefault(x => x.BlogId == id);
