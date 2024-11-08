@@ -20,6 +20,7 @@ namespace DotNetTrainingBatch5.share
 
         public List<T> Query<T>(string query, object? param = null) 
         {
+            //Console.WriteLine("Query is: " + query);
             using IDbConnection db = new SqlConnection(_connectionString);
             var lst = db.Query<T>(query,param).ToList();
             return lst;
