@@ -1,0 +1,6 @@
+@DotNetTraininBatch5.MiniBankApi_HostAddress = http://localhost:5157
+
+GET {{DotNetTraininBatch5.MiniBankApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
